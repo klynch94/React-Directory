@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EmployeeCard from "./components/EmployeeCard";
 import employees from "./employees.json";
 import Wrapper from "./components/Wrapper";
+import Title from "./components/Title";
 
 class App extends Component {
   // setting state to all employees in array
@@ -13,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        {/* <Title>Employees</Title> */}
+        <Title>Krusty Krab Employees</Title>
         {this.state.employees.map(employee => (
           <EmployeeCard
             id={employee.id}

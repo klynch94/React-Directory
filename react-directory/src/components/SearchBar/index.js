@@ -3,9 +3,9 @@ import "./style.css";
 
 function SearchBar(props) {
     return (
-      <form>
+      <form className="searchForm">
         <div className="form-group">
-          <label htmlFor="search">Search:</label>
+          <label htmlFor="search"></label>
           <input
             onChange={props.handleInputChange}
             value={props.value}
@@ -16,7 +16,7 @@ function SearchBar(props) {
             id="search"
           />
         </div>
-        <div>
+        <div className="acendingBtn">
             <button onClick={props.handleFormSubmit} >Acending</button>
         </div>
       </form>

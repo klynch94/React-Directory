@@ -28,7 +28,6 @@ class App extends Component {
     this.setState({
       [name]: value
     });
-    console.log(value)
 
     let filteredEmployees = this.state.originalResult.filter(employee => {
       return employee.name.first.toLowerCase().includes(value.toLowerCase()) || employee.name.last.toLowerCase().includes(value.toLowerCase())
@@ -36,16 +35,14 @@ class App extends Component {
     this.setState({
       result: filteredEmployees
     })
-
   };
 
-  // When the form is submitted, search the random user API for the value of `this.state.search`
+  // sort in acending order
   handleFormSubmit = event => {
     event.preventDefault();
     let acending=this.state.result.sort((a,b) => {
       return a.name.last.localeCompare(b.name.last)
     })
-    console.log("acending", acending)
     this.setState({
       result: acending
     })
@@ -54,7 +51,7 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Title>Employees</Title>
+        <Title>Employee Directory</Title>
         {console.log(this.state.result)}
         <SearchBar handleFormSubmit={this.handleFormSubmit} handleInputChange={this.handleInputChange}></SearchBar>
         {/* // Map over employees and render EmployeeCard components */}
@@ -63,7 +60,7 @@ class App extends Component {
             <EmployeeCard
               key={employee.index}
               name={employee.name.first + " " + employee.name.last}
-              image={employee.picture.medium}
+              image={employee.picture.large}
               role={employee.email}
               office={employee.location.city}
             />

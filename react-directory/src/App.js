@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import EmployeeCard from "./components/EmployeeCard";
+import employees from "./employees.json";
+import Wrapper from "./components/Wrapper";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  // setting state to all employees in array
+  state = {
+    employees
+  };
+
+  // Map over employees and render EmployeeCard components
+  render() {
+    return (
+      <Wrapper>
+        {/* <Title>Employees</Title> */}
+        {this.state.employees.map(employee => (
+          <EmployeeCard
+            id={employee.id}
+            key={employee.id}
+            name={employee.name}
+            image={employee.image}
+            role={employee.role}
+            office={employee.office}
+          />
+        ))}
+      </Wrapper>
+    );
+  }
 }
 
 export default App;
